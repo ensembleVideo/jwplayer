@@ -15,7 +15,7 @@ define([
         };
     }
 
-    test('response.text()', function (assert) {
+    QUnit.test('response.text()', function (assert) {
         var done = assert.async();
 
         var uri = require.toUrl('./data/playlist.json');
@@ -37,7 +37,7 @@ define([
             'utils.fetch returns a Promise');
     });
 
-    test('response.json()', function (assert) {
+    QUnit.test('response.json()', function (assert) {
         var done = assert.async();
 
         var uri = require.toUrl('./data/playlist.json');
@@ -54,7 +54,7 @@ define([
             .catch(errorHandler(assert, done));
     });
 
-    test('error "File not found" (404)', function (assert) {
+    QUnit.test('error "File not found" (404)', function (assert) {
         var done = assert.async();
 
         utils.fetch('failUrl')

@@ -6,7 +6,7 @@ define([
     QUnit.module('dom');
     var test = QUnit.test.bind(QUnit);
 
-    test('dom.addClass', function (assert) {
+    QUnit.test('dom.addClass', function (assert) {
         var element = document.createElement('div');
         assert.strictEqual(element.className, '', 'Created an element with no classes');
 
@@ -27,7 +27,7 @@ define([
             'Added space delimited classes to element');
     });
 
-    test('dom.removeClass', function (assert) {
+    QUnit.test('dom.removeClass', function (assert) {
         var element = document.createElement('div');
         element.className = 'class1 class2 class3';
         assert.equal(element.className, 'class1 class2 class3', 'Created an element with two classes');
@@ -43,7 +43,7 @@ define([
     });
 
 
-    test('dom.replaceClass', function (assert) {
+    QUnit.test('dom.replaceClass', function (assert) {
         var element = document.createElement('div');
 
         dom.replaceClass(element, /class0/, 'class1');
@@ -63,13 +63,13 @@ define([
         assert.equal(element.className, 'classB', 'Replaces classes when pattern matches any class');
     });
 
-    test('dom.createElement', function(assert) {
+    QUnit.test('dom.createElement', function(assert) {
         var element = dom.createElement('<div id=\'testid\'></div>');
 
         assert.equal(element.id, 'testid', 'element create test');
     });
 
-    test('dom.styleDimension', function(assert) {
+    QUnit.test('dom.styleDimension', function(assert) {
         var percentage = dom.styleDimension('50%');
         var px = dom.styleDimension('50');
 
@@ -78,7 +78,7 @@ define([
         assert.equal(px, '50px', 'px dimension test');
     });
 
-    test('dom.classList', function(assert) {
+    QUnit.test('dom.classList', function(assert) {
         var elementA = document.createElement('div');
         elementA.className = 'class1 class2';
 
@@ -100,7 +100,7 @@ define([
         assert.notOk(dom.hasClass(elementA, 'class3'), 'has class test with non existing class');
     });
 
-    test('dom.toggleClass', function(assert) {
+    QUnit.test('dom.toggleClass', function(assert) {
         var element = document.createElement('div');
         dom.addClass(element, 'a');
 
@@ -113,7 +113,7 @@ define([
         assert.notOk(dom.hasClass(element, 'a'), 'has class test with removed class');
     });
 
-    test('dom.emptyElement', function(assert) {
+    QUnit.test('dom.emptyElement', function(assert) {
         var element = document.createElement('div');
         var child = document.createElement('p');
 
@@ -137,7 +137,7 @@ define([
         dom.empty(null);
     });
 
-    test('addStyleSheet test', function(assert) {
+    QUnit.test('addStyleSheet test', function(assert) {
         var url = 'testUrl';
         dom.addStyleSheet(url);
 
@@ -145,7 +145,7 @@ define([
         assert.ok(document.getElementsByTagName('head')[0].lastChild.href.indexOf('testUrl') >= 0);
     });
 
-    test('bounds test', function(assert) {
+    QUnit.test('bounds test', function(assert) {
         var element = document.createElement('div');
         var emptyBound = {left: 0, right: 0, width: 0, height: 0 , top: 0, bottom: 0};
 

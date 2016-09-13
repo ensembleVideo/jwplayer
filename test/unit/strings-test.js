@@ -6,7 +6,7 @@ define([
     QUnit.module('strings');
     var test = QUnit.test.bind(QUnit);
 
-    test('strings.pad', function(assert) {
+    QUnit.test('strings.pad', function(assert) {
         var str = strings.pad('test', 7, '1');
         assert.equal(str, '111test', 'strings padding correctly done');
 
@@ -14,7 +14,7 @@ define([
         assert.equal(str, 'test', 'strings padding with smaller length than str should not pad anything');
     });
 
-    test('strings.extension', function(assert) {
+    QUnit.test('strings.extension', function(assert) {
         var ext = strings.extension('invalid');
         assert.strictEqual(ext, undefined, 'invalid path extension returns undefined');
 
@@ -41,7 +41,7 @@ define([
         assert.equal(ext, 'm3u8', 'Dot in the search and hash portions of the url');
     });
 
-    test('strings.seconds', function(assert) {
+    QUnit.test('strings.seconds', function(assert) {
         var sec = strings.seconds(5);
         assert.equal(sec, 5, 'number input returns input');
 
@@ -70,7 +70,7 @@ define([
         assert.equal(sec, 61.5, 'hours minute seconds frames input with frameRate returns seconds');
     });
 
-    test('strings.hms', function(assert) {
+    QUnit.test('strings.hms', function(assert) {
         var str = strings.hms(3661);
         assert.equal(str, '01:01:01.000', 'hms gives correct time string format');
 
@@ -78,7 +78,7 @@ define([
         assert.equal(str, '00:00:01.111', 'hms gives milliseconds rounded to 3dp');
     });
 
-    test('strings.prefix', function(assert) {
+    QUnit.test('strings.prefix', function(assert) {
         var prefix = strings.prefix(['1', '2'], '0');
         assert.equal(prefix[0], '01', 'prefix with 0 index correct');
         assert.equal(prefix[1], '02', 'prefix with 1 index correct');

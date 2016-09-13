@@ -6,7 +6,7 @@ define([
     QUnit.module('helpers');
     var test = QUnit.test.bind(QUnit);
 
-    test('helpers foreach test', function(assert) {
+    QUnit.test('helpers foreach test', function(assert) {
         var aData = {'hello': 'hi'};
         var tester = [];
         function fnEach(key, val) {
@@ -19,7 +19,7 @@ define([
         assert.equal(tester[1], 'hi');
     });
 
-    test('helpers log with fake console', function(assert) {
+    QUnit.test('helpers log with fake console', function(assert) {
         var tmpConsole = window.console;
         var m = [];
 

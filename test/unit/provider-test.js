@@ -85,7 +85,7 @@ define([
     QUnit.module('provider primary priority');
     var test = QUnit.test.bind(QUnit);
 
-    test('no primary defined', function (assert) {
+    QUnit.test('no primary defined', function (assert) {
         var providerList = new Providers().providers;
         assert.expect(4);
 
@@ -97,7 +97,7 @@ define([
         assert.ok(keys.flash > keys.youtube, 'Flash has lower priority than youtube');
     });
 
-    test('html5 primary requested', function (assert) {
+    QUnit.test('html5 primary requested', function (assert) {
 		var providerList = new Providers({primary: 'html5'}).providers;
         assert.expect(3);
 
@@ -108,7 +108,7 @@ define([
     });
 
 
-    test('flash primary requested', function (assert) {
+    QUnit.test('flash primary requested', function (assert) {
 		var providerList = new Providers({primary: 'flash'}).providers;
         assert.expect(3);
 

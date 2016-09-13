@@ -12,7 +12,7 @@ define([
         };
     };
 
-    test('parser.getAbsolutePath', function(assert) {
+    QUnit.test('parser.getAbsolutePath', function(assert) {
         var path = parser.getAbsolutePath(null, null);
         assert.notOk(path, 'passing null as path returns null');
 
@@ -37,7 +37,7 @@ define([
         test(['../hello.mp4', 'https://example.com/hi.html'], 'https://example.com/hello.mp4');
     });
 
-    test('parser.serialize', function (assert) {
+    QUnit.test('parser.serialize', function (assert) {
         var array = [];
         var object = {};
 
@@ -59,7 +59,7 @@ define([
         test(['100%'], '100%', 'percentage values are not changed');
     });
 
-    test('parser.getScriptPath', function(assert) {
+    QUnit.test('parser.getScriptPath', function(assert) {
         var path = parser.getScriptPath(null);
         assert.equal(path, '', 'returns an empty string when no file name is provided');
 
@@ -68,7 +68,7 @@ define([
             'returns a directory url ending with a forward slash "'+ scriptPath +'"');
     });
 
-    test('parser.parseXML', function(assert) {
+    QUnit.test('parser.parseXML', function(assert) {
         var xml = parser.parseXML('<input>');
         assert.notOk(xml);
         //
@@ -77,7 +77,7 @@ define([
         assert.ok(xml, 'xml should be returned');
     });
 
-    test('parser.parseDimension', function(assert) {
+    QUnit.test('parser.parseDimension', function(assert) {
         var dimension = parser.parseDimension('');
         assert.equal(dimension, 0, 'dimension with empty string should be 0');
 
@@ -91,7 +91,7 @@ define([
         assert.equal(dimension, 35, 'dimension with int should be itself');
     });
 
-    test('parser.timeFormat', function(assert) {
+    QUnit.test('parser.timeFormat', function(assert) {
         var time;
 
         time = parser.timeFormat(3661);
@@ -131,7 +131,7 @@ define([
         assert.equal(time, '00:00', 'timeFormat with minutes seconds');
     });
 
-    test('parser.adaptiveType', function(assert) {
+    QUnit.test('parser.adaptiveType', function(assert) {
         var type = parser.adaptiveType(0);
         assert.equal(type, 'VOD', 'adaptiveType with 0');
 

@@ -6,14 +6,14 @@ define([
     QUnit.module('trycatch');
     var test = QUnit.test.bind(QUnit);
 
-    test('defines', function(assert) {
+    QUnit.test('defines', function(assert) {
         assert.expect(2);
 
         assert.equal(typeof trycatch.tryCatch, 'function', 'trycatch function is defined');
         assert.equal(typeof trycatch.Error, 'function', 'Error function is defined');
     });
 
-    test('calling', function(assert) {
+    QUnit.test('calling', function(assert) {
         assert.expect(2);
 
         var x = {};
@@ -30,7 +30,7 @@ define([
         assert.strictEqual(value, 1, 'returns value returned by function argument when no exception is thrown');
     });
 
-    test('calling in debug mode', function(assert) {
+    QUnit.test('calling in debug mode', function(assert) {
         assert.expect(1);
 
         // store previous global/jwplayer settings
@@ -56,7 +56,7 @@ define([
 
     });
 
-    test('Error', function(assert) {
+    QUnit.test('Error', function(assert) {
         assert.expect(2);
 
         var error = new trycatch.Error('error name', 'error message');

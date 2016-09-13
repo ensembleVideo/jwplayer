@@ -5,7 +5,6 @@ define([
     /* jshint qunit: true */
 
     QUnit.module('validator');
-    var test = QUnit.test.bind(QUnit);
 
     var testerGenerator = function (assert, method) {
         return function (left, right, message) {
@@ -13,7 +12,7 @@ define([
         };
     };
 
-    test('validator.exists test', function(assert) {
+    QUnit.test('validator.exists test', function(assert) {
         var test = testerGenerator(assert, validator.exists);
         test([true], true);
         test([0],    true);
@@ -23,7 +22,7 @@ define([
         test([undefined], false);
     });
 
-    test('validator.typeOf', function(assert) {
+    QUnit.test('validator.typeOf', function(assert) {
         var test = testerGenerator(assert, validator.typeOf);
         test([0],       'number');
         test([''],      'string');
@@ -37,7 +36,7 @@ define([
     });
 
 
-    test('validator.youTubeID', function(assert) {
+    QUnit.test('validator.youTubeID', function(assert) {
         var ytVideoId = 'YE7VzlLtp-4';
 
         var sampleUrls = [
@@ -62,7 +61,7 @@ define([
         assert.equal(validator.youTubeID('invalid?@?!@$?!$@'), '', 'youTubeID with invalid path');
     });
 
-    test('isYouTube test', function(assert) {
+    QUnit.test('isYouTube test', function(assert) {
         var sampleUrls = [
             'http://www.youtube.com/watch?v=YE7VzlLtp-4',
             'http://youtu.be/YE7VzlLtp-4',

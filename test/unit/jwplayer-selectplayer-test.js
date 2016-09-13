@@ -20,12 +20,12 @@ define([
         return api;
     };
 
-    test('is defined', function(assert) {
+    QUnit.test('is defined', function(assert) {
         // Test jwplayer module
         assert.ok(_.isFunction(jwplayer), 'jwplayer is a function');
     });
 
-    test('allows plugins to register when no player is found', function(assert) {
+    QUnit.test('allows plugins to register when no player is found', function(assert) {
         var x = jwplayer();
 
         // It might be preferable to always return an API instance
@@ -35,7 +35,7 @@ define([
         assert.strictEqual(x.setup, undefined, 'object.setup is not defined');
     });
 
-    test('handles invalid queries by returning an object plugins can register', function(assert) {
+    QUnit.test('handles invalid queries by returning an object plugins can register', function(assert) {
         // test invalid queries after a player is setup
         append('<div id="player"></div>');
 
@@ -52,19 +52,19 @@ define([
         a.remove();
     });
 
-    test('returns a new api instance when given an element id', function(assert) {
+    QUnit.test('returns a new api instance when given an element id', function(assert) {
         append('<div id="player"></div>');
 
         testInstanceOfApi( assert, jwplayer('player') ).remove();
     });
 
-    test('returns a new api instance when given an element with an id', function(assert) {
+    QUnit.test('returns a new api instance when given an element with an id', function(assert) {
         var element = append('<div id="player"></div>');
 
         testInstanceOfApi( assert, jwplayer(element) ).remove();
     });
 
-    test('returns a new api instance when given an element with no id not in the DOM', function(assert) {
+    QUnit.test('returns a new api instance when given an element with no id not in the DOM', function(assert) {
         var element = $('<div></div>')[0];
 
         var x = testInstanceOfApi( assert, jwplayer(element) );
@@ -76,7 +76,7 @@ define([
         x.remove();
     });
 
-    test('returns the same api instance for matching queries', function(assert) {
+    QUnit.test('returns the same api instance for matching queries', function(assert) {
         var element = append('<div id="player"></div>');
 
         var x = jwplayer('player');

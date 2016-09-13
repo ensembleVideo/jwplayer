@@ -48,7 +48,7 @@ define([
     QUnit.module('playlist.filterSources');
     var test = QUnit.test.bind(QUnit);
 
-    test('flash primary', function(assert) {
+    QUnit.test('flash primary', function(assert) {
         testSource(assert, 'flv_mp4', 'flv', true);
         testSource(assert, 'mp4_flv', 'mp4', true);
         testSource(assert, 'aac_mp4', 'aac', true);
@@ -58,7 +58,7 @@ define([
         testSource(assert, 'mixed', 'mp4', true);
     });
 
-    test('html5 primary', function(assert) {
+    QUnit.test('html5 primary', function(assert) {
         testSource(assert, 'flv_mp4', 'flv', false);
         testSource(assert, 'mp4_flv', 'mp4', false);
         testSource(assert, 'aac_mp4', 'aac', false);
@@ -71,7 +71,7 @@ define([
 
     QUnit.module('playlist.filterPlaylist');
 
-    test('filterPlaylist', function(assert) {
+    QUnit.test('filterPlaylist', function(assert) {
         var pl;
         pl = playlist.filterPlaylist(playlists['webm_mp4'], new Providers());
         assert.equal(pl[0].sources[0].type, 'webm', 'Webm mp4 first source is webm');
@@ -100,7 +100,7 @@ define([
     });
 
 
-    test('it prioritizes withCredentials in the order of source, playlist, then global', function (assert) {
+    QUnit.test('it prioritizes withCredentials in the order of source, playlist, then global', function (assert) {
         assert.expect(4);
         var withCredentialsPlaylist = [
             {
@@ -146,7 +146,7 @@ define([
     });
 
 
-    test('it does not put withCredentials on the playlist if undefined', function (assert) {
+    QUnit.test('it does not put withCredentials on the playlist if undefined', function (assert) {
         assert.expect(2);
 
         var undefinedCredentialsPlaylist = [

@@ -6,7 +6,7 @@ define([
     QUnit.module('timer');
     var test = QUnit.test.bind(QUnit);
 
-    test('timer start/end test', function(assert) {
+    QUnit.test('timer start/end test', function(assert) {
         var time = new timer();
         time.start('test');
         time.end('test');
@@ -19,7 +19,7 @@ define([
         assert.notOk(invalidEnd, 'function that has not yet started should have no end time');
     });
 
-    test('timer tick test', function(assert) {
+    QUnit.test('timer tick test', function(assert) {
         var time = new timer();
 
         time.tick('event1', 5);

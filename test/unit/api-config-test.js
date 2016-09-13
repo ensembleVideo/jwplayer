@@ -32,7 +32,7 @@ define([
         return x;
     }
 
-    test('handles worst case config options', function(assert) {
+    QUnit.test('handles worst case config options', function(assert) {
         testConfig(assert);
         testConfig(assert, undefined);
         testConfig(assert, {});
@@ -44,7 +44,7 @@ define([
         // testConfig(assert, {width: true});
     });
 
-    test('accepts width values in different formats', function(assert) {
+    QUnit.test('accepts width values in different formats', function(assert) {
         var x = testConfig(assert, {
             width : '100px'
         });
@@ -66,7 +66,7 @@ define([
         assert.equal(x.width, '100', 'raw numbers work');
     });
 
-    test('accepts playlist values in different formats', function(assert) {
+    QUnit.test('accepts playlist values in different formats', function(assert) {
         var x = testConfig(assert, {
             playlist:'urlToLoad'
         });
@@ -78,7 +78,7 @@ define([
         assert.equal(x.playlist[0].file, 'abc.mp4', 'Passing a file attr works');
     });
 
-    test('accepts aspectratio in percentage and W:H formats', function(assert) {
+    QUnit.test('accepts aspectratio in percentage and W:H formats', function(assert) {
         // http://support.jwplayer.com/customer/portal/articles/1406644-making-jw-player-responsive
         var x = testConfig(assert, {
             width:'10%',
@@ -127,7 +127,7 @@ define([
         assert.strictEqual(x.aspectratio, undefined, 'aspectratio must contain positive numbers');
     });
 
-    test('updates base to cdn or script location', function(assert) {
+    QUnit.test('updates base to cdn or script location', function(assert) {
         var CUSTOM_BASE = 'http://mywebsite.com/jwplayer/';
         var apiConfig;
 
@@ -154,7 +154,7 @@ define([
             'config.base is not replaced when a custom value other than "." is specified');
     });
 
-    test('flattens skin object', function(assert) {
+    QUnit.test('flattens skin object', function(assert) {
         var skinObject = {
             name: 'foo',
             url: 'skin/url',
@@ -184,7 +184,7 @@ define([
             'skin.name defaults to "seven" when a skin object with no name is passed');
     });
 
-    test('removes ".xml" from skin param', function(assert) {
+    QUnit.test('removes ".xml" from skin param', function(assert) {
         var x = testConfig(assert, {
             skin: 'six.xml'
         });

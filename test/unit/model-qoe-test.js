@@ -17,7 +17,7 @@ define([
     _.extend(MediaModel.prototype, SimpleModel);
 
 
-    test('tracks first frame with provider first frame event', function(assert) {
+    QUnit.test('tracks first frame with provider first frame event', function(assert) {
         var startTime = _.now();
         var model = new Model().setup({});
 
@@ -34,7 +34,7 @@ define([
         validateQoeFirstFrame(assert, model._qoeItem, startTime);
     });
 
-    test('tracks first frame with first increasing time event', function(assert) {
+    QUnit.test('tracks first frame with first increasing time event', function(assert) {
         var startTime = _.now();
         var model = new Model().setup({});
 
@@ -54,7 +54,7 @@ define([
         validateQoeFirstFrame(assert, model._qoeItem, startTime);
     });
 
-    test('removes media controller event listeners', function(assert) {
+    QUnit.test('removes media controller event listeners', function(assert) {
         var startTime = _.now();
         var model = new Model().setup({});
 
@@ -81,7 +81,7 @@ define([
         assert.equal(qoeDump.events.firstFrame,  -1, 'first frame is unchanged after further media events');
     });
 
-    test('tracks stalled time', function(assert) {
+    QUnit.test('tracks stalled time', function(assert) {
         var model = new Model().setup({});
 
         model.set('mediaModel', new MediaModel());
@@ -96,7 +96,7 @@ define([
         assert.ok(validateMeasurement(qoeDump.sums.stalled), 'stalled sum is a valid number');
     });
 
-    test('uses one qoe item per playlist item', function(assert) {
+    QUnit.test('uses one qoe item per playlist item', function(assert) {
         // Test qoe model observation
         var model = new Model().setup({});
 

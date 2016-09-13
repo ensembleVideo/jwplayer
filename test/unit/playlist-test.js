@@ -15,7 +15,7 @@ define([
     QUnit.module('playlist');
     var test = QUnit.test.bind(QUnit);
 
-    test('Test initialized successfully', function(assert) {
+    QUnit.test('Test initialized successfully', function(assert) {
         assert.expect(3);
 
         assert.equal(typeof item, 'function', 'item is defined');
@@ -23,7 +23,7 @@ define([
         assert.equal(typeof track, 'function', 'track is defined');
     });
 
-    test('Test constructor with single item', function (assert) {
+    QUnit.test('Test constructor with single item', function (assert) {
         assert.expect(3);
         var p;
 
@@ -38,7 +38,7 @@ define([
         assert.ok(isValidPlaylistItem(p[0]), 'Initialize with just file name');
     });
 
-    test('Test constructor with array of items', function (assert) {
+    QUnit.test('Test constructor with array of items', function (assert) {
         assert.expect(3);
         var p,
             arr = [mp4.starscape, mp4.starscape, mp4.starscape];

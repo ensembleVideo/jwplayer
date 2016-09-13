@@ -16,7 +16,6 @@ define([
     // polyfill webpack require.ensure
     //window.jwplayer.api = Api;
     require.ensure = function(array, callback, moduleName) {
-        console.log('Unit test polyfill for webpack require.ensure', '"'+ moduleName + '"');
         callback(function webpackRequire(modulePath) {
             return ({
                 'providers/html5': providerHtml5,
@@ -31,7 +30,7 @@ define([
     QUnit.module('Api');
     var test = QUnit.test.bind(QUnit);
 
-    test('extends Events', function(assert) {
+    QUnit.test('extends Events', function(assert) {
         var api = createApi('player');
         _.each(Events, function(value, key) {
             var itExtends = api[key] === value;
@@ -41,7 +40,7 @@ define([
         });
     });
 
-    test('api.trigger works', function(assert) {
+    QUnit.test('api.trigger works', function(assert) {
         var api = createApi('player');
         var check = false;
         function update() {
@@ -53,7 +52,7 @@ define([
         assert.ok(check, 'api.trigger works');
     });
 
-    test('api.off works', function(assert) {
+    QUnit.test('api.off works', function(assert) {
         var api = createApi('player');
         var check = false;
         function update() {
@@ -66,7 +65,7 @@ define([
         assert.equal(check, false, 'api.off works');
     });
 
-    test('bad events don\'t break player', function(assert) {
+    QUnit.test('bad events don\'t break player', function(assert) {
         window.jwplayer = window.jwplayer || {};
         delete window.jwplayer.debug;
 
@@ -88,7 +87,7 @@ define([
         assert.ok(check, 'When events blow up, handler continues');
     });
 
-    test('throws exceptions when debug is true', function(assert) {
+    QUnit.test('throws exceptions when debug is true', function(assert) {
         window.jwplayer = window.jwplayer || {};
         window.jwplayer.debug = true;
 
@@ -107,13 +106,13 @@ define([
         delete window.jwplayer.debug;
     });
 
-    test('rendering mode is html5', function(assert) {
+    QUnit.test('rendering mode is html5', function(assert) {
         var api = createApi('player');
 
         assert.equal(api.getRenderingMode(), 'html5', 'api.getRenderingMode() returns "html5"');
     });
 
-    test('can be removed and reused', function(assert) {
+    QUnit.test('can be removed and reused', function(assert) {
         var api = createApi('player', function(instance) {
             assert.strictEqual(instance, api, 'globalRemovePlayer is called with api instance');
         });
@@ -132,7 +131,7 @@ define([
         }).remove();
     });
 
-    test('replaces and restores container', function(assert) {
+    QUnit.test('replaces and restores container', function(assert) {
         var originalContainer = createContainer('player');
         var api = new Api(originalContainer, _.noop);
 
@@ -148,7 +147,7 @@ define([
         assert.strictEqual(elementInDom, originalContainer, 'container is restored after remove');
     });
 
-    test('event dispatching', function(assert) {
+    QUnit.test('event dispatching', function(assert) {
         var api = createApi('player');
         var originalEvent = {
             type: 'original'
@@ -164,7 +163,7 @@ define([
         assert.equal(originalEvent.type, 'original', 'original event.type is not modified');
     });
 
-    test('defines expected methods', function(assert) {
+    QUnit.test('defines expected methods', function(assert) {
         var api = createApi('player');
 
         _.each(apiMethods, function(args, method) {
@@ -173,7 +172,7 @@ define([
 
     });
 
-    test('defines expected members', function(assert) {
+    QUnit.test('defines expected members', function(assert) {
         var api = createApi('player');
 
         _.each(apiMembers, function(value, member) {
@@ -184,7 +183,7 @@ define([
 
     });
 
-    test('does not contain unexpected members or methods', function(assert) {
+    QUnit.test('does not contain unexpected members or methods', function(assert) {
         var api = createApi('player');
 
         _.each(api, function(args, property) {
@@ -208,7 +207,7 @@ define([
 
     });
 
-    test('has chainable methods', function(assert) {
+    QUnit.test('has chainable methods', function(assert) {
         var api = createApi('player');
 
         _.each(apiMethodsChainable, function(args, method) {
@@ -227,7 +226,7 @@ define([
         });
     });
 
-    test('has getters that return values before setup', function(assert) {
+    QUnit.test('has getters that return values before setup', function(assert) {
         var api = createApi('player');
 
         assert.strictEqual(api.getContainer(), document.getElementById('player'),
@@ -250,7 +249,7 @@ define([
 
     });
 
-    test('has methods that can only be called after setup', function(assert) {
+    QUnit.test('has methods that can only be called after setup', function(assert) {
         var done = assert.async();
 
         var api = createApi('player');
@@ -329,7 +328,7 @@ define([
         });
     });
 
-    test('queues commands called after setup before ready', function(assert) {
+    QUnit.test('queues commands called after setup before ready', function(assert) {
         var done = assert.async();
 
         var api = createApi('player');

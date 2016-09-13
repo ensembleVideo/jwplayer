@@ -14,7 +14,7 @@ define([
         COMPLETE: 3
     };
 
-    test('scriptloader.getStatus', function(assert) {
+    QUnit.test('scriptloader.getStatus', function(assert) {
         // check status new
         var script = new scriptloader('styleTag', true);
         assert.equal(script.getStatus(), STATUS.NEW, 'newly created scriptloader has state new');
@@ -27,14 +27,14 @@ define([
         assert.equal(script.getStatus(), STATUS.LOADING, 'loading script causes status to load');
     });
 
-    test('scriptloader with style', function(assert) {
+    QUnit.test('scriptloader with style', function(assert) {
         // check style tag true creates stylesheet
         var script = new scriptloader('styleTag', true);
         var tag = script.makeTag('styleTag');
         assert.ok(tag.href.indexOf('styleTag') >= 0, 'makeTag with isStyle true creates style tag');
     });
 
-    test('scriptloader with script', function(assert) {
+    QUnit.test('scriptloader with script', function(assert) {
         var script = new scriptloader('scriptTag', false);
         var tag = script.makeTag('scriptTag');
         script.load();
@@ -42,7 +42,7 @@ define([
         assert.ok(tag.src.indexOf('scriptTag') >= 0, 'makeTag with isStyle false creates script tag');
     });
 
-    test('scriptloader load same script', function(assert) {
+    QUnit.test('scriptloader load same script', function(assert) {
         var script = new scriptloader('scriptTag1', false);
         script.load();
 
@@ -58,7 +58,7 @@ define([
             'adding same tag should not add the tag');
     });
 
-    test('scriptloader with actual path', function(assert) {
+    QUnit.test('scriptloader with actual path', function(assert) {
         var scriptPath = parser.getScriptPath('scriptloader-test.js') + 'scriptloader-test.js';
         var script = new scriptloader(scriptPath, false);
         script.load();

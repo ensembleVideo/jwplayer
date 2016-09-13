@@ -29,7 +29,7 @@ define([
         return item;
     }
 
-    test('worst case input arguments are handled', function(assert) {
+    QUnit.test('worst case input arguments are handled', function(assert) {
 
         testItem(assert);
         testItem(assert, undefined);
@@ -42,7 +42,7 @@ define([
         testItem(assert, {tracks: 1});
     });
 
-    test('input with multiple sources, a default and captions track', function(assert) {
+    QUnit.test('input with multiple sources, a default and captions track', function(assert) {
         var x = testItemComplete(assert, {
             image: 'image.png',
             description: 'desc',
@@ -92,7 +92,7 @@ define([
 
     });
 
-    test('input source type normalization', function(assert) {
+    QUnit.test('input source type normalization', function(assert) {
         var x = testItem(assert, {
             sources: [
                 {
@@ -131,7 +131,7 @@ define([
 
     });
 
-    test('input.levels are converted to sources', function(assert) {
+    QUnit.test('input.levels are converted to sources', function(assert) {
         var x = testItem(assert, {
             levels: [{
                 file: 'f1.mp4',
@@ -144,7 +144,7 @@ define([
         assert.equal(x.sources[0].file, 'f1.mp4', 'first source file matches input.levels[0].file');
     });
 
-    test('input.captions are converted to tracks', function(assert) {
+    QUnit.test('input.captions are converted to tracks', function(assert) {
         var x = testItem(assert, {
             file: 'x',
             captions: [
@@ -158,7 +158,7 @@ define([
         assert.equal(x.tracks[0].file, 'fake.vtt', 'First track file matches input.captions[0].file');
     });
 
-    test('property passthrough of unknown values', function(assert) {
+    QUnit.test('property passthrough of unknown values', function(assert) {
         var x = testItem(assert, {
             file: 'x',
             randomStr : 'rrr',
@@ -173,7 +173,7 @@ define([
         assert.equal(x.randomStr, 'rrr', 'Passes through unknown values');
     });
 
-    test('input.sources may contain one source object instead of array', function(assert) {
+    QUnit.test('input.sources may contain one source object instead of array', function(assert) {
         var x = testItem(assert, {
             sources: {
                 file: 'f1.mp4',

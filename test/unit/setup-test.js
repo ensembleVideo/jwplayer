@@ -8,7 +8,7 @@ define([
     QUnit.module('Setup');
     var test = QUnit.test.bind(QUnit);
 
-    test('fails when playlist is not an array', function(assert) {
+    QUnit.test('fails when playlist is not an array', function(assert) {
 
         var readyHandler = function() {
             assert.ok(false, 'setup should not succeed');
@@ -34,7 +34,7 @@ define([
         testSetup(model, readyHandler, errorHandler, assert.async());
     });
 
-    test('fails if playlist is empty', function(assert) {
+    QUnit.test('fails if playlist is empty', function(assert) {
         var model = {
             playlist: []
         };
@@ -46,7 +46,7 @@ define([
         }, assert.async());
     });
 
-    test('fails when playlist items are filtered out', function(assert) {
+    QUnit.test('fails when playlist items are filtered out', function(assert) {
         var model = {
             playlist: [{sources:[{file:'file.foo'}]}]
         };
@@ -65,7 +65,7 @@ define([
     });
 
     /*
-    test('fails after timeout', function(assert) {
+    QUnit.test('fails after timeout', function(assert) {
         var model = {
             setupTimeout: 0.001,
             playlist: [{sources:[{file:'file.mp4'}]}],
@@ -79,7 +79,7 @@ define([
         }, assert.async());
     });
 
-    test('fails - skin error', function(assert) {
+    QUnit.test('fails - skin error', function(assert) {
         var model = getModel({
             playlist: [{sources:[{file:'file.mp4'}]}],
             skin: '404.xml'
@@ -93,7 +93,7 @@ define([
     });
      */
 
-    test('succeeds when model.playlist.sources is valid', function(assert) {
+    QUnit.test('succeeds when model.playlist.sources is valid', function(assert) {
         var model = {
             playlist: [{sources:[{file:'http://playertest.longtailvideo.com/mp4.mp4'}]}]
         };
@@ -106,7 +106,7 @@ define([
     });
 
     /*
-    test('can be cancelled', function(assert) {
+    QUnit.test('can be cancelled', function(assert) {
         var model = {
             playlist: [{sources:[{file:'file.mp4'}]}]
         };
@@ -129,7 +129,7 @@ define([
     });
     */
 
-    test('modifies config', function(assert) {
+    QUnit.test('modifies config', function(assert) {
         var options = {
             file: 'http://playertest.longtailvideo.com/mp4.mp4',
             aspectratio: '4:3',

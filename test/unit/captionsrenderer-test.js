@@ -12,7 +12,7 @@ define([
     
     QUnit.module('CaptionsRenderer.getCurrentCues');
 
-    test('should show the correct number of cues at any given position in time', function (assert) {
+    QUnit.test('should show the correct number of cues at any given position in time', function (assert) {
         var allCues = [
             new VTTCue(0, 3, 'HG: Morning, Rob.'),
             new VTTCue(4, 5, 'How are you?'),
@@ -32,7 +32,7 @@ define([
 
     QUnit.module('CaptionsRenderer.updateCurrentCues');
 
-    test('should set current cues ', function (assert) {
+    QUnit.test('should set current cues ', function (assert) {
         var cues = [
             new VTTCue(0, 3, 'HG: Morning, Rob.')
         ];

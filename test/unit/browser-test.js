@@ -6,7 +6,7 @@ define([
     QUnit.module('browser');
     var test = QUnit.test.bind(QUnit);
 
-    test('browser checks', function(assert) {
+    QUnit.test('browser checks', function(assert) {
         assert.equal(typeof browser.isFF(), 'boolean');
         assert.equal(typeof browser.isIETrident(), 'boolean');
         assert.equal(typeof browser.isMSIE(), 'boolean');
@@ -19,7 +19,7 @@ define([
         assert.equal(typeof browser.isMobile(), 'boolean');
     });
 
-    test('browser.flashVersion test', function(assert) {
+    QUnit.test('browser.flashVersion test', function(assert) {
         var flashVersion = browser.flashVersion();
 
         assert.equal(typeof flashVersion, 'number', 'Flash version is ' + flashVersion);

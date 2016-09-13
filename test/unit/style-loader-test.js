@@ -10,16 +10,16 @@ define([
         return elements[elements.length - 1];
     };
 
-    test('cssUtils.css creates a new style tag if one for the playerId does not exist', function (assert) {
-        expect(1);
+    QUnit.test('cssUtils.css creates a new style tag if one for the playerId does not exist', function (assert) {
+        assert.expect(1);
         var countBeforeCall = document.getElementsByTagName('style').length;
         styleLoader.style([['#div1', '#div1{color: cyan;}']], 'style-loader-test-1');
         var countAfterCall = document.getElementsByTagName('style').length;
         assert.equal(countBeforeCall + 1, countAfterCall);
     });
 
-    test('cssUtils.css adds player styles to style element unique to the playerId', function (assert) {
-        expect(3);
+    QUnit.test('cssUtils.css adds player styles to style element unique to the playerId', function (assert) {
+        assert.expect(3);
         styleLoader.style([['#div1', '#div1{color: red;}']], 'style-loader-test-2');
         var actual = getLastInsertedElement();
         assert.ok(actual);
@@ -29,8 +29,8 @@ define([
         assert.notEqual(actual.innerHTML.indexOf('#div2{color: blue;}'), -1, 'adds to existing style tag');
     });
 
-    test('cssUtils.css replaces styles of the selector when it already exists', function (assert) {
-        expect(4);
+    QUnit.test('cssUtils.css replaces styles of the selector when it already exists', function (assert) {
+        assert.expect(4);
         styleLoader.style([['#div1', '#div1{color: green;}']], 'style-loader-test-3');
 
         var actual = getLastInsertedElement();
@@ -43,8 +43,8 @@ define([
         assert.notEqual(actual.innerHTML.indexOf('#div1{color: rebeccapurple;}'), -1);
     });
 
-    test('cssUtils.clear clears the style tag but does not remove it', function (assert) {
-        expect(4);
+    QUnit.test('cssUtils.clear clears the style tag but does not remove it', function (assert) {
+        assert.expect(4);
         styleLoader.style([['#div1', '#div1{color: magenta;}']], 'style-loader-test-4');
 
         var actual = getLastInsertedElement();

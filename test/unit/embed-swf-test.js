@@ -7,7 +7,7 @@ define([
     QUnit.module('Embed SWF Util');
     var test = QUnit.test.bind(QUnit);
 
-    test('embeds a swf', function(assert) {
+    QUnit.test('embeds a swf', function(assert) {
         var parent = $('<div id="container"></div>')[0];
         var id = 'player_swf_0';
         var swf = createEmbedder(parent, id);
@@ -32,7 +32,7 @@ define([
         EmbedSwf.remove(swf);
     });
 
-    test('remove a swf', function(assert) {
+    QUnit.test('remove a swf', function(assert) {
         var parent = $('<div id="container"></div>')[0];
         var id = 'player_swf_1';
         var swf = createEmbedder(parent, id);

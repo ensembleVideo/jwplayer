@@ -6,7 +6,7 @@ define([
     QUnit.module('css');
     var test = QUnit.test.bind(QUnit);
 
-    test('css.css and css.clearCss', function(assert) {
+    QUnit.test('css.css and css.clearCss', function(assert) {
         var playerId = 'css-testplayer';
         var count = document.getElementsByTagName('style').length;
 
@@ -49,7 +49,7 @@ define([
             'css text correctly inserted');
     });
 
-    test('css.style', function(assert) {
+    QUnit.test('css.style', function(assert) {
         var element = document.createElement('div');
         var element2 = document.createElement('div');
 
@@ -81,7 +81,7 @@ define([
         assert.ok(element2.getAttribute('style').indexOf('background-image: url(') >= 0, 'camelCase style img');
     });
 
-    test('css.transform', function(assert) {
+    QUnit.test('css.transform', function(assert) {
         var element = document.createElement('div');
 
         // this should not break
@@ -103,7 +103,7 @@ define([
         assert.equal(element.style.oTransform, '', 'css transform o');
     });
 
-    test('css.hexToRgba', function(assert) {
+    QUnit.test('css.hexToRgba', function(assert) {
         // this should not break
         css.hexToRgba(null, null);
 
