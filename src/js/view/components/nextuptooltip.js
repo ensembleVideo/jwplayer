@@ -12,7 +12,6 @@ define([
 
         this.nextUpText = _model.get('localization').nextUp;
         this.state = 'tooltip';
-        this.relatedMode = false;
     };
 
     _.extend(NextUpTooltip.prototype, {
@@ -69,12 +68,7 @@ define([
         },
         click: function() {
             this.state = 'tooltip';
-            if (this.relatedMode && this._related.selectItem_) {
-                 this._related.selectItem_(this.nextUpItem, 'interaction');
-            } else if (!this.relatedMode) {
-                this._api.playlistNext({reason: 'interaction'});
-            }
-
+            this._related.next();
             this.hide();
         },
         show: function() {
@@ -159,8 +153,6 @@ define([
         onPlaylist: function(model, playlist) {
             this._playlist = playlist;
             this.showNextUp = (playlist.length > 1);
-            this.relatedMode = false;
-
             this._nextButton.toggle(this.showNextUp);
         },
         onPlaylistItem: function(item) {
@@ -268,7 +260,6 @@ define([
             }
         },
         enableRelatedMode: function() {
-            this.relatedMode = true;
             var relatedBlock = this._model.get('related');
             // If there are related items, Next Up is shown when we're autoplaying and the timer is set to 0
             this.showNextUp = relatedBlock.oncomplete === 'autoplay' && relatedBlock.autoplaytimer === 0;
